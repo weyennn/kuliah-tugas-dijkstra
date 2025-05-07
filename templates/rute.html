@@ -36,37 +36,50 @@
 
     .timeline {
       margin-top: 25px;
-      position: relative;
-      padding-left: 30px;
+      padding-left: 20px;
       border-left: 3px solid #3498db;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
-    .step {
-      margin-bottom: 25px;
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       position: relative;
     }
-    .dot {
+    .timeline-item::after {
+      content: "";
       position: absolute;
-      left: -13px;
-      top: 0;
-      font-size: 18px;
-    }
-    .label {
-      font-size: 17px;
-      color: #2c3e50;
-      margin-left: 10px;
-    }
-    .line {
-      position: absolute;
-      left: -3px;
-      top: 20px;
-      height: 20px;
-      width: 3px;
+      left: 5px;
+      top: 30px;
+      height: calc(100% - 30px);
+      width: 2px;
       background-color: #3498db;
+    }
+    .timeline-item:last-child::after {
+      display: none;
+    }
+    .circle {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+    }
+    .content {
+      font-size: 16px;
+      color: #2c3e50;
     }
 
     img {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 30px;
       border-radius: 12px;
       box-shadow: 0 5px 12px rgba(0,0,0,0.05);
     }
@@ -99,12 +112,9 @@
     <h2>🔽 Jalur yang Dilalui:</h2>
     <div class="timeline">
       {% for tempat in jalur %}
-        <div class="step">
-          <span class="dot">📍</span>
-          <span class="label">{{ tempat }}</span>
-          {% if not loop.last %}
-          <div class="line"></div>
-          {% endif %}
+        <div class="timeline-item">
+          <div class="circle">📍</div>
+          <div class="content">{{ tempat }}</div>
         </div>
       {% endfor %}
     </div>
