@@ -1,9 +1,13 @@
 
 from flask import Flask, render_template, request
 import networkx as nx
-import matplotlib.pyplot as plt
 import heapq
 import os
+os.environ["MPLCONFIGDIR"] = "/tmp"
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
 
 app = Flask(__name__)
 
