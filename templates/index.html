@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,58 +5,53 @@
     <title>Cari Rute Wisata</title>
     <style>
         body {
-            background-color: #f4f6f9;
-            font-family: 'Segoe UI', sans-serif;
             margin: 0;
-            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #d0f0f6, #ffffff);
         }
         .container {
             max-width: 600px;
             margin: 60px auto;
             background: #fff;
-            padding: 30px 40px;
+            padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         h1 {
             text-align: center;
-            color: #34495e;
+            color: #2c3e50;
         }
         label {
-            display: block;
             margin-top: 20px;
-            color: #555;
+            display: block;
+            color: #34495e;
             font-weight: bold;
         }
         select, input[type="submit"] {
             width: 100%;
             padding: 12px;
-            margin-top: 8px;
-            border-radius: 8px;
+            margin-top: 10px;
             border: 1px solid #ccc;
+            border-radius: 8px;
             font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        select:focus, input[type="submit"]:hover {
-            border-color: #3498db;
-            box-shadow: 0 0 5px rgba(52,152,219,0.4);
-            outline: none;
+            box-sizing: border-box;
         }
         input[type="submit"] {
             background-color: #3498db;
-            color: #fff;
-            font-weight: bold;
+            color: white;
             border: none;
             margin-top: 30px;
+            cursor: pointer;
+            font-weight: bold;
         }
         input[type="submit"]:hover {
-            background-color: #2980b9;
+            background-color: #2c80b4;
         }
-        footer {
+        .footer {
             text-align: center;
             font-size: 14px;
-            color: #aaa;
             margin-top: 60px;
+            color: #aaa;
         }
     </style>
 </head>
@@ -82,8 +76,8 @@
             <input type="submit" value="Cari Rute 📍">
         </form>
     </div>
-    <footer>
-        &copy; 2025 Rute Wisata Yogyakarta
-    </footer>
+    <div class="footer">
+        &copy; 2025 Rute Wisata Yogyakarta. Powered by Flask & NetworkX.
+    </div>
 </body>
 </html>
