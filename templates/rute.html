@@ -109,17 +109,17 @@
     <h1>🧭 Rute dari <em>{{ asal }}</em> ke <em>{{ tujuan }}</em></h1>
     <p>🚗 Total Jarak: <strong>{{ jarak }}</strong> km</p>
 
-    <h2>🔽 Jalur yang Dilalui:</h2>
+    <h2>Jalur yang Dilalui:</h2>
     <div class="timeline">
       {% for tempat in jalur %}
         <div class="timeline-item">
-          <div class="circle">📍</div>
+          <div class="circle"></div>
           <div class="content">{{ tempat }}</div>
         </div>
       {% endfor %}
     </div>
 
-    <h2>🗺️ Visualisasi Jalur:</h2>
+    <h2>Visualisasi Jalur:</h2>
     <img src="data:image/png;base64,{{ graph_img }}" alt="Graf Rute">
 
     <a href="/" class="back-link">← Kembali ke Halaman Utama</a>
