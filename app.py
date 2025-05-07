@@ -1,13 +1,13 @@
 
 from flask import Flask, render_template, request
 import networkx as nx
-import heapq
-import os
-os.environ["MPLCONFIGDIR"] = "/tmp"
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-
+import heapq
+import os
+import base64
+from io import BytesIO
 
 app = Flask(__name__)
 
@@ -40,7 +40,7 @@ def dijkstra(graph, start, end):
                 heapq.heappush(queue, (cost + graph[node][neighbor], neighbor, path))
     return (float("inf"), [])
 
-def draw_graph(path):
+def generate_graph_image(path):
     G = nx.Graph()
     for node in graph:
         for neighbor in graph[node]:
@@ -53,9 +53,11 @@ def draw_graph(path):
         path_edges = list(zip(path, path[1:]))
         nx.draw_networkx_edges(G, pos, edgelist=path_edges, edge_color='red', width=4)
     plt.axis('off')
-    plt.tight_layout()
-    plt.savefig("static/graph.png")
+    buf = BytesIO()
+    plt.savefig(buf, format='png')
     plt.close()
+    buf.seek(0)
+    return base64.b64encode(buf.read()).decode('utf-8')
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -64,9 +66,10 @@ def index():
 
 @app.route("/rute", methods=["POST"])
 def rute():
-    asal = request.form["asal"]
-    tujuan = request.form["tujuan"]
+    asal = request.form.get("asal", "")
+    tujuan = request.form.get("tujuan", "")
+    if not asal or not tujuan or asal == tujuan:
+        return "Asal dan tujuan harus diisi dan tidak boleh sama", 400
     jarak, jalur = dijkstra(graph, asal, tujuan)
-    draw_graph(jalur)
-    return render_template("rute.html", asal=asal, tujuan=tujuan, jarak=jarak, jalur=jalur)
-
+    graph_img = generate_graph_image(jalur)
+    return render_template("rute.html", asal=asal, tujuan=tujuan, jarak=jarak, jalur=jalur, graph_img=graph_img)
