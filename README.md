@@ -28,7 +28,7 @@ Aplikasi web interaktif berbasis Flask untuk mencari **jalur tercepat antar dest
 
 ```bash
 # 1. Clone repositori ini
-git clone https://github.com/username/kuliah-tugas-dijkstra.git
+git clone https://github.com/weyennn/kuliah-tugas-dijkstra.git
 cd kuliah-tugas-dijkstra
 
 # 2. Buat environment & install dependensi
