@@ -14,7 +14,7 @@ Aplikasi web interaktif berbasis Flask untuk mencari **jalur tercepat antar dest
 
 ---
 
-## 🧰 Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 - `Flask` – Web framework Python
 - `NetworkX` – Untuk membuat graf dan mencari rute terpendek (Dijkstra)
@@ -44,7 +44,7 @@ Akses di `http://127.0.0.1:5000`.
 
 ---
 
-## 🌐 Demo Online
+## Demo Online
 
 🔗 [pka-app2.vercel.app](https://pka-app2.vercel.app/)
 
